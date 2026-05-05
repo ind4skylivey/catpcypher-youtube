@@ -1,0 +1,1931 @@
+/* ==UserStyle==
+@name         Catpcypher YouTube Theme
+@namespace    USO Archive
+@author       iL2v3Y
+@description  Catpcypher - Cyberpunk theme for YouTube with intuitive color-coded button glows
+@version      v5
+@license      MIT
+@preprocessor uso
+==/UserStyle== */
+
+@-moz-document domain("youtube.com"), regexp("http(s?)://[^/]*\.youtube(\.com)?(\.[a-z][a-z])?/.*"), regexp("http(s?)://youtube(\.com)?(\.[a-z][a-z])?/.*") {
+  [style*="position: absolute; width: 100%; height: 100%;"] {
+      display: none;
+    }
+    html {
+      scrollbar-color: var(--bg2) #313244 !important;
+    }
+    body {
+      overflow-x: hidden !important;
+    }
+    /* Aesthetic background gradient overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -15;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(125, 179, 255, 0.4), transparent 45%),
+        radial-gradient(circle at 80% 10%, rgba(255, 126, 182, 0.25), transparent 40%),
+        radial-gradient(circle at 50% 75%, rgba(180, 245, 168, 0.2), transparent 55%),
+        linear-gradient(180deg, rgba(24, 24, 37, 0.95), rgba(30, 30, 46, 0.9)),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 7px);
+      background-size: cover;
+      background-blend-mode: screen;
+      opacity: 0.9;
+      filter: saturate(1.1) brightness(0.95);
+      animation: aestheticPulse 20s ease-in-out infinite alternate;
+    }
+    ytd-app {
+      z-index: -11;
+      background: var(--bg2) !important;
+    }
+    ytd-app::before {
+      content: '';
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      background: var(--rep1);
+    }
+    ytd-app::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      background: var(--rep1), var(--wallpa1);
+      position: fixed;
+      display: block;
+      z-index: -3;
+      top: 0;
+      bottom: 0;
+    }
+    #guide-content.ytd-app {
+      background: transparent;
+    }
+    #guide-content.ytd-app::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      background: var(--rep1), var(--wallpa1);
+      position: fixed;
+      display: block;
+      z-index: -2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+    #scrim.tp-yt-app-drawer {
+      background: var(--scrim);
+      background-blend-mode: normal;
+    }
+    #container.ytd-masthead {
+      height: 40px;
+      padding: 0 16px 15px 16px;
+      background: var(--rep1), var(--bg2);
+      clip-path: polygon(100% 0, 100% 90%, 85% 90%, 75% 175%, 75% 5000%, 25% 5000%, 20% 100%, 19% 90%, 0 90%, 0 0);
+    }
+    #container.ytd-masthead::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: var(--rep1), var(--wallpa1);
+      opacity: 0.4;
+      position: absolute;
+      display: block;
+      z-index: -4;
+      left: 0;
+      top: 0;
+    }
+    #cinematics {
+      mix-blend-mode: lighten !important;
+      z-index: -11;
+    }
+    #background.ytd-masthead {
+      background: var(--lg3);
+      box-shadow: 0 0 25px rgba(255, 126, 182, 0.5), 1px 0px 25px rgba(125, 179, 255, 0.4), 0 0 50px rgba(30, 30, 46, 0.8);
+    }
+    ytd-searchbox.ytd-masthead {
+      margin: 10px 0px 0px 95px;
+    }
+    #voice-search-button.ytd-masthead {
+      margin-left: 2em;
+    }
+    #center.ytd-masthead {
+      margin-top: 12px;
+    }
+    ytd-searchbox[has-focus] #container.ytd-searchbox {
+      border: 1px solid var(--bg3);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+      margin-left: 0;
+      transition: 0.2s;
+      padding: 2px 4px 2px 48px;
+    }
+    .ytd-topbar-logo-renderer:hover {
+      animation-name: rubberBand;
+      animation-duration: 1s;
+      animation-delay: 10s;
+      animation-fill-mode: both;
+      animation-iteration-count: 5;
+    }
+    ytd-topbar-logo-renderer:not(:active) {
+      animation: yadlogo2;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: 1;
+      animation-direction: normal;
+      animation-fill-mode: none;
+    }
+  /* Logo animation */
+  @keyframes yadlogo2 {
+      0% {
+        transform: scaleY(2);
+        filter: blur(4px);
+        opacity: 0;
+      }
+      100% {
+        transform: scaleY(1);
+        filter: blur(0);
+        opacity: 1;
+      }
+  }
+  @keyframes aestheticPulse {
+      0% {
+        filter: saturate(1) brightness(0.9);
+      }
+      100% {
+        filter: saturate(1.2) brightness(1);
+      }
+  }
+
+  /* Rubber band animation for hover effects */
+  @keyframes rubberBand {
+      0% { transform: scale3d(1, 1, 1); }
+      30% { transform: scale3d(1.25, 0.75, 1); }
+      40% { transform: scale3d(0.75, 1.25, 1); }
+      50% { transform: scale3d(1.15, 0.85, 1); }
+      65% { transform: scale3d(0.95, 1.05, 1); }
+      75% { transform: scale3d(1.05, 0.95, 1); }
+      100% { transform: scale3d(1, 1, 1); }
+  }
+    .gsfs {
+      color: var(--cy1) !important;
+    }
+    .sbsb_d {
+      background: var(--bg0);
+    }
+    html[darker-dark-theme] .sbqs_c:before {
+      filter: invert(1);
+    }
+    html[dark] .sbqs_c:before {
+      filter: invert(0) !important;
+    }
+    yt-report-form-modal-renderer[dialog][dialog][dialog],
+    tp-yt-paper-dialog,
+    tp-yt-paper-menu-button[vertical-align=top] .dropdown-content.tp-yt-paper-menu-button,
+    ytd-multi-page-menu-renderer {
+      opacity: var(--oppa);
+      border-radius: 0;
+      backdrop-filter: none;
+      --background-color: var(--yt-spec-base-background);
+      clip-path: var(--poly1);
+    }
+    yt-report-form-modal-renderer[dialog][dialog][dialog]::before,
+    tp-yt-paper-dialog::before,
+    tp-yt-paper-menu-button[vertical-align=top] .dropdown-content.tp-yt-paper-menu-button::before,
+    ytd-multi-page-menu-renderer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--border-color);
+      z-index: -2;
+    }
+    yt-report-form-modal-renderer[dialog][dialog][dialog]::after,
+    tp-yt-paper-dialog::after,
+    tp-yt-paper-menu-button[vertical-align=top] .dropdown-content.tp-yt-paper-menu-button::after,
+    ytd-multi-page-menu-renderer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--background-color);
+      z-index: -1;
+      clip-path: var(--poly2);
+      animation: galaw2 0.2s 1 linear;
+    }
+    ytd-menu-popup-renderer {
+      opacity: var(--oppa);
+      border-radius: 0;
+      backdrop-filter: none;
+      --background-color: var(--yt-spec-base-background);
+      clip-path: var(--poly1);
+    }
+    ytd-menu-popup-renderer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--yt-spec-base-background);
+      z-index: -1;
+      clip-path: var(--poly2);
+      animation: galaw2 0.4s 1 linear;
+    }
+    ytd-menu-popup-renderer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--border-color);
+      z-index: -5;
+    }
+    .yt-contextual-sheet-layout-wiz,
+    .ytp-popup {
+      opacity: var(--oppa);
+      border-radius: 0;
+      backdrop-filter: none;
+      --background-color: var(--yt-spec-base-background);
+      clip-path: var(--poly1);
+    }
+    .yt-contextual-sheet-layout-wiz::before,
+    .ytp-popup::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--border-color);
+      z-index: -2;
+    }
+    .yt-contextual-sheet-layout-wiz::after,
+    .ytp-popup::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--background-color);
+      z-index: -1;
+      clip-path: var(--poly2);
+      animation: galaw2 0.4s 1 linear;
+    }
+    ytd-menu-popup-renderer tp-yt-paper-listbox.ytd-menu-popup-renderer {
+      background: none;
+    }
+    .ytd-menu-title-renderer {
+      color: var(--tx1);
+    }
+    #offRadio.tp-yt-paper-radio-button,
+    #checkbox.tp-yt-paper-checkbox {
+      border-color: var(--acc);
+    }
+    .ytp-progress-bar::before {
+      content: "initializing" " " attr(aria-valuenow);
+      width: 60px;
+      height: 20px;
+      position: absolute;
+      z-index: 999;
+      left: 0px;
+      top: -10px;
+      display: block;
+      color: var(--acc);
+      font-size: x-small;
+      writing-mode: vertical-rl;
+      font-weight: 900;
+      text-shadow: 0 0 4px rgba(125, 179, 255, 0.7);
+    }
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+      color: #ffffff !important;
+      background: var(--acc);
+      padding: 16px 32px;
+      position: relative;
+      cursor: pointer;
+      border-radius: 0px;
+      transition: box-shadow 0.1s ease, background 0.3s ease;
+      clip-path: polygon(0 0, calc(100% - var(--es)) 0, 100% var(--es), 100% calc(100% - 0%), calc(100% - var(--es)) 100%, var(--es) 100%, 0 calc(100% - var(--es)), 0 var(--es));
+      overflow: hidden;
+      border: none;
+      font-weight: 600 !important;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
+      background: #313244;
+      box-shadow: inset -4px -4px 12px var(--acc), inset 4px 4px 12px var(--acc2), 5px 5px 18px rgba(30, 30, 46, 0.9), 0 0 25px rgba(125, 179, 255, 0.4);
+      color: var(--acc);
+    }
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      clip-path: polygon(0 0, calc(100% - var(--es)) 0, 100% var(--es), 100% calc(100% - var(--es)), calc(100% - var(--es)) 100%, var(--es) 100%, 0 calc(100% - var(--es)), 0 var(--es));
+      border: 2px solid var(--acc3); /* Optional border accent */
+      pointer-events: none;
+    }
+    .ytSearchboxComponentSearchButton,
+    .ytSearchboxComponentSearchButtonDark,
+    #search-icon-legacy.ytd-searchbox {
+      background: linear-gradient(135deg, var(--acc) calc(115% - var(--es)), transparent 0%);
+      border-radius: 0px;
+      border: 0;
+      margin-left: 4px;
+    }
+    .ytSearchboxComponentSearchButton:hover,
+    .ytSearchboxComponentSearchButtonDark:hover,
+    #search-icon-legacy.ytd-searchbox:hover {
+      background: linear-gradient(135deg, var(--acc) calc(115% - var(--es)), transparent 0%);
+      opacity: 0.9;
+      border: 0px;
+    }
+    .ytSearchboxComponentSearchButton:active,
+    .ytSearchboxComponentSearchButtonDark:active,
+    #search-icon-legacy.ytd-searchbox:active {
+      background: linear-gradient(135deg, var(--acc2) calc(115% - var(--es)), transparent 0%);
+      opacity: 0.9;
+      transform: translateX(-1px);
+    }
+    .ytSearchboxComponentSearchButton:focus,
+    .ytSearchboxComponentSearchButtonDark:focus,
+    #search-icon-legacy.ytd-searchbox:focus {
+      background: linear-gradient(135deg, var(--acc2) calc(115% - var(--es)), transparent 0%);
+      opacity: 0.9;
+    }
+    ytd-searchbox[system-icons] #search-icon-legacy.ytd-searchbox yt-icon.ytd-searchbox {
+      color: #e0e7ff;
+      stroke: #7db3ff;
+    }
+    .ytSearchboxComponentInputBox,
+    .ytSearchboxComponentInputBoxDark,
+    #container.ytd-searchbox {
+      border: 0px solid transparent;
+      opacity: var(--oppa);
+      border-radius: 0;
+      clip-path: var(--poly-search);
+      --background-color: var(--yt-spec-base-background);
+      --ses1: var(--es);
+      --sbw1: var(--bw);
+    }
+    .ytSearchboxComponentInputBox::before,
+    .ytSearchboxComponentInputBoxDark::before,
+    #container.ytd-searchbox::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--border-color);
+      z-index: -2;
+    }
+    .ytSearchboxComponentInputBox::after,
+    .ytSearchboxComponentInputBoxDark::after,
+    #container.ytd-searchbox::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--background-color);
+      z-index: -1;
+      clip-path: var(--poly-search2);
+    }
+    .ytSearchboxComponentInputBox:hover,
+    .ytSearchboxComponentInputBoxDark:hover,
+    #container.ytd-searchbox:hover {
+      border: 0px solid transparent;
+    }
+    .ytSearchboxComponentInputBoxDark,
+    .ytSearchboxComponentInputBoxHasFocus {
+      border: none;
+    }
+    .gstl_50.sbdd_a [style*="display"] {
+      width: 100%;
+    }
+    .ytSearchboxComponentSuggestionsContainer,
+    .sbsb_a,
+    .sbdd_b,
+    .gstl_50.sbdd_a {
+      border-radius: 0;
+      --background-color: var(--yt-spec-base-background);
+      opacity: var(--oppa);
+      clip-path: var(--poly-search-down);
+      border: 0px solid transparent;
+      animation: galaw3 0.5s 1 linear;
+    }
+    .ytSearchboxComponentSuggestionsContainer::before,
+    .sbsb_a::before,
+    .sbdd_b::before,
+    .gstl_50.sbdd_a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--border-color);
+      z-index: -5;
+    }
+    .ytSearchboxComponentSuggestionsContainer::after,
+    .sbsb_a::after,
+    .sbdd_b::after,
+    .gstl_50.sbdd_a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--yt-spec-base-background);
+      z-index: -1;
+      clip-path: var(--poly-search-down2);
+    }
+    .ytSearchboxComponentHost,
+    .ytSuggestionComponentSuggestion,
+    .ytSuggestionComponentLeftContainer span {
+      color: var(--tx1);
+    }
+    tp-yt-iron-dropdown.style-scope.ytd-popup-container {
+      animation: galaw2 0.3s 1 linear;
+    }
+    tp-yt-iron-dropdown.style-scope.ytd-popup-container::after {
+      content: "";
+      position: absolute;
+      background: var(--borderc);
+      border-radius: 0;
+      width: 30%;
+      height: 15px;
+      right: 0;
+      top: 0;
+      z-index: 99999;
+      margin-right: auto;
+      clip-path: polygon(0 0 /*t left*/, calc(100% - var(--es)) 0 /*t right*/, 100% calc(0% + var(--es)) /*t-side right*/, 100% calc(100% - var(--es)) /*b-side right*/, 100% 100% /*b right*/, 0% 100% /*b left*/, 0 100% /*b-side left*/, 0 100%) /*t-side left*/;
+      animation: galaw1 0.4s 1 linear;
+    }
+    ytd-exploratory-results-renderer.ytd-item-section-renderer,
+    ytd-horizontal-card-list-renderer.ytd-item-section-renderer:not(:first-child),
+    ytd-reel-shelf-renderer.ytd-item-section-renderer,
+    ytd-rich-section-renderer {
+      display: none;
+    }
+    tp-yt-iron-overlay-backdrop.opened {
+      display: none;
+    }
+    yt-page-navigation-progress[enable-refresh-signature-moments-web] #progress.yt-page-navigation-progress,
+    .ytp-cairo-refresh-signature-moments .ytp-play-progress,
+    .PlayerControlsProgressBarHostProgressBarPlayed,
+    .PlayerControlsProgressBarHostProgressBarPlayheadDot {
+      background: var(--acc);
+      box-shadow: 0 0 20px 2px rgba(125, 179, 255, 0.9), 0 0 40px 4px rgba(125, 179, 255, 0.5);
+    }
+    .yt-spec-button-shape-next--size-m:hover,
+    .yt-spec-button-shape-next__icon:hover,
+    .yt-spec-icon-shape:hover {
+      transform: scale(0.97) !important;
+    }
+    .yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--icon-leading-trailing .yt-spec-button-shape-next__icon [fill*="3"] {
+      fill: var(--tx2) !important;
+    }
+
+    /* Note: Guide icons styled in Section 9. Sidebar improvements */
+
+    .ytSearchboxComponentDesktop .ytSearchboxComponentClearButtonIcon,
+    .yt-spec-button-shape-next__button-text-content {
+      color: #6bc8ff !important;
+      font-weight: 600 !important;
+      text-shadow: 0 0 8px rgba(107, 200, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    /* Like button - only when toggled/active */
+    ytd-toggle-button-renderer[is-toggled] svg path {
+      fill: #ff7eb6 !important;
+      filter: drop-shadow(0 0 6px rgba(255, 126, 182, 0.8)) !important;
+    }
+    /* Dislike - different color when toggled */
+    ytd-toggle-button-renderer[is-toggled]:nth-of-type(2) svg path {
+      fill: #b4f5a8 !important;
+      filter: drop-shadow(0 0 6px rgba(180, 245, 168, 0.8)) !important;
+    }
+    g#youtube-red-paths_yt2079,
+    [id^="yt-logo-updated_yt"] {
+      fill: var(--acc) !important;
+    }
+    [d^="M14.4848 20C14.4848 20 23.5695 20 25.8229 19.4C27.0917 19.06 28.0459 18.08 28.3808"] {
+      d: path("M23.81,2l2.52,2.52v10.83l-2.52,2.52H5.01l-2.52-2.52V4.51l2.52-2.52h18.79M25.4,0H3.42C2.08,1.34,1.34,2.08,0,3.42v13.02c1.34,1.34,2.08,2.08,3.42,3.42h21.98c1.34-1.34,2.08-2.08,3.42-3.42V3.42c-1.34-1.34-2.08-2.08-3.42-3.42h0Z");
+      fill: var(--topicons);
+    }
+    [d^="m13.497 4.898.053.8.694.4C15.596 6.878 16.5 8.334 16.5 10v2.892c0"] {
+      d: path("M12,0,1.62,6v9.89L4.93,14V7.9L12,3.82,17.46,7l3.35-1.91Zm0,7.64L8.25,9.82v4.33L12,16.31l3.75-2.16V9.82ZM22.38,8,19.07,9.88V16.1L12,20.19,6.44,17,3.1,18.86,12,24l10.38-6V8Z") !important;
+      fill: var(--topicons);
+    }
+    [d^="M18.001 10a6.003 6.003 0 00-4.025-5.667 2 2 0 10-3.945-.002A6.003 6.003"] {
+      d: path("M12,0,1.62,6v9.89L4.93,14V7.9L12,3.82,17.46,7l3.35-1.91Zm0,7.64L8.25,9.82v4.33L12,16.31l3.75-2.16V9.82ZM22.38,8,19.07,9.88V16.1L12,20.19,6.44,17,3.1,18.86,12,24l10.38-6V8Z") !important;
+    }
+    [d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"],
+    [d="M17 18v1H6v-1ZM6.49 9l.71.71 3.8-3.8V16h1V5.91l3.8 3.81.71-.72-5-5Z"] {
+      d: path("M12,0,1.62,6v9.89L4.93,14V7.9L12,3.82,17.46,7l3.35-1.91Zm0,7.39L7.52,10v5.18L12,12.55l4.48,2.59V10ZM22.38,8,19.07,9.9v6.22L12,20.21,6.44,17,3.1,18.86,12,24l10.38-6Z") !important;
+      fill: var(--topicons);
+    }
+    [d^="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"] {
+      d: path("M22.87,5.73V18.27L14.5,23.1V17.33l3.37-1.94V8.61L14.5,6.67V.9ZM6.13,15.39V8.61L9.5,6.67V.9L1.13,5.73V18.27L9.5,23.1V17.33ZM12,8.11A3.89,3.89,0,1,0,15.89,12,3.89,3.89,0,0,0,12,8.11Z") !important;
+      fill: var(--topicons);
+    }
+    [d="M16.296 16.996a8 8 0 11.707-.708l3.909 3.91-.707.707-3.909-3.909ZM18 11a7 7 0 11-14 0 7 7 0 0114 0Z"] {
+      d: path("M10.87,5.1l5.19,3v6l-5.19,3-5.2-3v-6l5.2-3m0-5.1L1.26,5.55V16.64l9.61,5.54,9.6-5.54V5.55L10.87,0Z") !important;
+    }
+    [d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"] {
+      d: path("M16,16.92l-2.28-2.83a2.71,2.71,0,0,0,1-1.75l3.58.55A6.31,6.31,0,0,1,16,16.92ZM9.3,12.38l-3.58.56A6.34,6.34,0,0,0,8,17l2.27-2.83A2.68,2.68,0,0,1,9.3,12.38ZM12,9.26a2.72,2.72,0,0,1,1,.19L14.3,6.08A6.32,6.32,0,0,0,12,5.64a6.24,6.24,0,0,0-2.3.44L11,9.45A2.72,2.72,0,0,1,12,9.26ZM13.67,12A1.68,1.68,0,1,0,12,13.67,1.67,1.67,0,0,0,13.67,12ZM12,3.89A8.11,8.11,0,1,0,20.11,12,8.12,8.12,0,0,0,12,3.89M12,2A10,10,0,1,1,2,12,10,10,0,0,1,12,2Z") !important;
+    }
+    [d="M12 3c-1.66 0-3 1.37-3 3.07v5.86c0 1.7 1.34 3.07 3 3.07s3-1.37 3-3.07V6.07C15 4.37 13.66 3 12 3zm6.5 9h-1c0 3.03-2.47 5.5-5.5 5.5S6.5 15.03 6.5 12h-1c0 3.24 2.39 5.93 5.5 6.41V21h2v-2.59c3.11-.48 5.5-3.17 5.5-6.41z"] {
+      d: path("M3.94,14.27,1,15.92A11.67,11.67,0,0,1,21.07,4.65L18.13,6.3a8.37,8.37,0,0,0-14.19,8Zm13.78,7.91A11.67,11.67,0,0,0,23,8.08L20.06,9.73a8.37,8.37,0,0,1-14.19,8L2.93,19.35A11.68,11.68,0,0,0,17.72,22.18ZM17.26,9.05A6,6,0,0,0,10,6.33l.75,1.34A4.72,4.72,0,0,0,9,8.67L8.21,7.32A6,6,0,0,0,14,17.67l-.75-1.34a4.72,4.72,0,0,0,1.77-1l.75,1.35A6,6,0,0,0,17.26,9.05Z") !important;
+      fill: var(--topicons);
+    }
+    .ytSearchboxComponentHost {
+      color: var(--topicons);
+    }
+    .masthead-skeleton-icon,
+    html .watch-skeleton .skeleton-bg-color {
+      background: var(--bg2);
+    }
+    .ytp-settings-button.ytp-hd-quality-badge:after,
+    .ytp-settings-button.ytp-hdr-quality-badge:after,
+    .ytp-settings-button.ytp-4k-quality-badge:after,
+    .ytp-settings-button.ytp-5k-quality-badge:after,
+    .ytp-settings-button.ytp-8k-quality-badge:after,
+    .ytp-settings-button.ytp-3d-badge-grey:after,
+    .ytp-settings-button.ytp-3d-badge:after,
+    .ytp-chrome-controls .ytp-button[aria-pressed]:after {
+      /* Clean - no box-shadow on active state */
+    }
+    .ytp-swatch-color-white {
+      color: #ff7eb6;
+    }
+    #contents ytd-rich-grid-row,
+    #contents ytd-rich-grid-row #contents {
+      display: contents;
+    }
+    .ytd-two-column-browse-results-renderer {
+      --ytd-rich-grid-items-per-row: 5 !important;
+    }
+    #text.ytd-channel-name,
+    ytd-video-meta-block[rich-meta] #metadata-line.ytd-video-meta-block,
+    #video-title.ytd-rich-grid-media {
+      font-size: var(--vprc);
+    }
+    ytd-rich-item-renderer {
+      margin-bottom: calc(30px - var(--vprc));
+    }
+    .ytp-ce-element.ytp-ce-element-show {
+      text-shadow: none;
+    }
+    ytd-watch-flexy[rounded-player-large][default-layout] #ytd-player.ytd-watch-flexy {
+      border-radius: 0px;
+      box-shadow: 0 0 0 2px var(--acc), 0 0 25px rgba(125, 179, 255, 0.4);
+    }
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--outline,
+    span.yt-core-attributed-string--link-inherit-color {
+      color: #b4f5a8 !important;
+      border-color: transparent;
+      font-weight: 600 !important;
+      text-shadow: 0 0 8px rgba(180, 245, 168, 0.7), 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--outline:hover,
+    span.yt-core-attributed-string--link-inherit-color:hover {
+      border-radius: 0;
+      background: none;
+    }
+    .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover {
+      background: #6bc8ff;
+      box-shadow: 0 0 18px rgba(107, 200, 255, 0.7);
+    }
+    .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled {
+      background: #45475a;
+      color: #e0e7ff !important;
+      font-weight: 600 !important;
+      text-shadow: 0 0 8px rgba(224, 231, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .yt-core-attributed-string__link--call-to-action-color,
+    .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--outline,
+    .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text {
+      color: var(--tx3) !important;
+      font-weight: 600 !important;
+      text-shadow: 0 0 8px rgba(125, 179, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
+      background: var(--bg0);
+    }
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+      color: #ffffff !important;
+      background: var(--acc);
+      box-shadow: 0 0 18px rgba(125, 179, 255, 0.5);
+      font-weight: 700 !important;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    yt-chip-cloud-chip-renderer[chip-style=STYLE_HOME_FILTER][selected],
+    #text.yt-chip-cloud-chip-renderer:hover,
+    .yt-tab-shape-wiz__tab {
+      color: var(--tx2);
+    }
+    .yt-tab-group-shape-wiz__slider {
+      background-color: var(--tx2) !important;
+    }
+    ytd-browse[page-subtype~=channels] ytd-two-column-browse-results-renderer.ytd-browse #header.ytd-rich-grid-renderer {
+      display: flex !important;
+    }
+    .yt-tab-shape-wiz:focus .yt-tab-shape-wiz__tab,
+    .yt-tab-shape-wiz__tab--tab-selected {
+      color: var(--cy1);
+      text-shadow: 0 0 6px rgba(125, 179, 255, 0.6);
+    }
+    yt-chip-cloud-chip-renderer[chip-style=STYLE_HOME_FILTER] {
+      background-color: var(--fe1);
+      backdrop-filter: blur(2px);
+      transition: all 0.2s ease;
+    }
+    yt-chip-cloud-chip-renderer[chip-style=STYLE_HOME_FILTER]:hover {
+      box-shadow: 0 0 12px rgba(125, 179, 255, 0.4);
+    }
+    yt-chip-cloud-chip-renderer.ytd-feed-filter-chip-bar-renderer {
+      margin: 1px;
+    }
+    yt-chip-cloud-chip-renderer {
+      border-radius: 0;
+    }
+    yt-chip-cloud-chip-renderer[chip-style^=STYLE],
+    yt-notification-action-renderer[darker-dark-theme] tp-yt-paper-toast.yt-notification-action-renderer,
+    yt-chip-cloud-chip-renderer.ytd-feed-filter-chip-bar-renderer {
+      --background-color: var(--yt-spec-base-background);
+      border-radius: 0;
+      clip-path: var(--poly-filter-down1);
+    }
+    yt-chip-cloud-chip-renderer[chip-style^=STYLE]::before,
+    yt-notification-action-renderer[darker-dark-theme] tp-yt-paper-toast.yt-notification-action-renderer::before,
+    yt-chip-cloud-chip-renderer.ytd-feed-filter-chip-bar-renderer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--border-color);
+      z-index: -5;
+    }
+    yt-chip-cloud-chip-renderer[chip-style^=STYLE]::after,
+    yt-notification-action-renderer[darker-dark-theme] tp-yt-paper-toast.yt-notification-action-renderer::after,
+    yt-chip-cloud-chip-renderer.ytd-feed-filter-chip-bar-renderer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      color: var(--tx2);
+      background: var(--yt-spec-base-background);
+      z-index: -1;
+      clip-path: var(--poly-filter-down2);
+    }
+    #emojis.ytd-commentbox,
+    .button-container.ytd-rich-shelf-renderer {
+      --background-color: none;
+      border-radius: 0;
+      clip-path: var(--poly-filter-down1);
+    }
+    #emojis.ytd-commentbox::before,
+    .button-container.ytd-rich-shelf-renderer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--border-color);
+      z-index: -5;
+    }
+    #emojis.ytd-commentbox::after,
+    .button-container.ytd-rich-shelf-renderer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      color: var(--tx2);
+      background: var(--bg2);
+      z-index: -1;
+      clip-path: var(--poly-filter-down2);
+    }
+    .ytp-menuitem[aria-checked=true] .ytp-menuitem-toggle-checkbox,
+    .ytp-swatch-background-color {
+      background: var(--acc);
+      box-shadow: 0 0 10px rgba(125, 179, 255, 0.6);
+    }
+    ytd-rich-item-renderer.style-scope.ytd-rich-grid-row.ytd-rich-item-renderer-highlight {
+      background-color: var(--bg0) !important;
+      box-shadow: var(--bg0) 0px 0px 0px 10px !important;
+    }
+    .yt-spec-icon-badge-shape--style-overlay .yt-spec-icon-badge-shape__icon,
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+    .yt-spec-button-shape-with-label__label,
+    .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+    .yt-spec-icon-badge-shape {
+      color: #b4f5a8 !important;
+      font-weight: 600 !important;
+      text-shadow: 0 0 8px rgba(180, 245, 168, 0.7), 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .yt-spec-touch-feedback-shape--touch-response .yt-spec-touch-feedback-shape__fill {
+      background-color: var(--yt-spec-icon-active-other);
+    }
+    .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled {
+      color: #ffffff !important;
+      background-color: var(--yt-spec-icon-active-other);
+      font-weight: 700 !important;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    .title.ytd-guide-entry-renderer:hover,
+    tp-yt-paper-item.ytd-compact-link-renderer:hover {
+      color: var(--lg4);
+      text-shadow: 0 0 8px rgba(180, 245, 168, 0.7), 0 1px 3px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
+    }
+    tp-yt-paper-item.style-scope.ytd-menu-service-item-renderer:hover,
+    tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+      background: rgba(255, 126, 182, 0.15);
+    }
+    ytd-toggle-theme-compact-link-renderer:hover::before,
+    #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover::before,
+    tp-yt-paper-item.ytd-compact-link-renderer:hover::before,
+    tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover::before,
+    tp-yt-paper-item.ytd-menu-service-item-renderer:hover::before {
+      content: "";
+      display: block;
+      background: var(--acc);
+      width: 4px;
+      height: 4px;
+      position: absolute;
+      left: 6px;
+      padding: 0 0 20px 0px;
+    }
+    button#search-icon-legacy::after {
+      content: "SEARCH";
+      position: absolute;
+      color: var(--tx1);
+      font-size: xx-small;
+      top: 10px;
+      writing-mode: vertical-rl;
+      padding: 0 0 0 22px;
+    }
+    button#search-icon-legacy:active::after {
+      content: "SEARCH";
+      position: absolute;
+      color: var(--tx2);
+      font-size: xx-small;
+      top: 1px;
+      writing-mode: vertical-rl;
+      padding: 0 0 0 22px;
+    }
+    ytd-guide-entry-renderer,
+    #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+    #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
+      border-radius: 0;
+      --clipper: calc(100% - 1.5em);
+      --clipper2: calc(0% + 0em);
+      clip-path: polygon(var(--clipper2) 0%, var(--clipper) 0, 100% var(--clipper2), 100% var(--clipper), var(--clipper) 100%, var(--clipper2) 100%, 0 var(--clipper), 0 var(--clipper2));
+    }
+    div#contenteditable-root {
+      color: var(--tx1);
+    }
+    * {
+      font-family: Default, system-ui, Roboto, sans-serif !important;
+    }
+    @font-face {
+      font-family: cyber;
+      src: url("https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nysimBoWgz.woff2");
+    }
+    @font-face {
+      font-family: Rye;
+      src: url("https://fonts.gstatic.com/s/rye/v13/r05XGLJT86YzEZ7t.woff2");
+    }
+    @font-face {
+      font-family: Poiret One;
+      src: url("https://fonts.gstatic.com/s/poiretone/v14/UqyVK80NJXN4zfRgbdfbo55cVw.woff2");
+    }
+    @font-face {
+      font-family: Lacquer;
+      src: url("https://fonts.gstatic.com/s/lacquer/v15/EYqzma1QwqpG4_BBN7iKXw.woff2");
+    }
+    @font-face {
+      font-family: Oxanium;
+      src: url("https://fonts.gstatic.com/s/oxanium/v14/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JfkiLD3U.woff2");
+    }
+    @font-face {
+      font-family: Carter One;
+      src: url("https://fonts.gstatic.com/s/carterone/v17/q5uCsoe5IOB2-pXv9UcNExN8hA.woff2");
+    }
+    @font-face {
+      font-family: Indie Flower;
+      src: url("https://fonts.gstatic.com/s/indieflower/v17/m8JVjfNVeKWVnh3QMuKkFcZVaUuH.woff2");
+    }
+    @font-face {
+      font-family: Shadows Into Light;
+      src: url("https://fonts.gstatic.com/s/shadowsintolight/v15/UqyNK9UOIntux_czAvDQx_ZcHqZXBNQzdcD5.woff2");
+    }
+    @font-face {
+      font-family: Righteous;
+      src: url("https://fonts.gstatic.com/s/righteous/v13/1cXxaUPXBpj2rGoU7C9WiHGF.woff2");
+    }
+    @font-face {
+      font-family: Pixelify;
+      src: url("https://fonts.gstatic.com/s/pixelifysans/v1/CHy2V-3HFUT7aC4iv1TxGDR9DHEserHN25py2TQO101fZZM.woff2");
+    }
+    @font-face {
+      font-family: Jersey;
+      src: url("https://fonts.gstatic.com/s/jersey20/v2/ZgNRjP1ON6jeW4D12z3sq0Xr.woff2");
+    }
+    @font-face {
+      font-family: digi;
+      src: url("https://fonts.cdnfonts.com/s/15049/DS-DIGII.woff");
+    }
+    @font-face {
+      font-family: Custom Font;
+      src: url("Font URL Here");
+    }
+    .dropdown-content.tp-yt-paper-menu-button {
+      --paper-menu-button-dropdown-background: var(--lineg1);
+    }
+    .yt-profile-card-view-model-wiz {
+      margin: 1em;
+    }
+    .yt-list-item-view-model-wiz__title,
+    .yt-list-item-view-model-wiz__accessory,
+    .yt-list-item-view-model-wiz,
+    .yt-lockup-metadata-view-model-wiz__title,
+    .page-header-view-model-wiz__page-header-title {
+      color: #ff7eb6;
+    }
+    tp-yt-paper-item.ytd-menu-service-item-renderer[disabled] yt-formatted-string.ytd-menu-service-item-renderer,
+    tp-yt-paper-item.ytd-menu-service-item-renderer[disabled] yt-icon.ytd-menu-service-item-renderer,
+    tp-yt-paper-item[disabled],
+    .tp-yt-paper-item.tp-yt-paper-item[disabled],
+    .YtChipShapeInactive {
+      color: #6bc8ff;
+    }
+    ytd-live-chat-frame:not([no-border]) {
+      box-shadow: 0 0 0 var(--bw) var(--acc), 0 0 18px rgba(125, 179, 255, 0.4);
+    }
+    yt-live-chat-product-picker-panel-view-model {
+      background-color: var(--bg0);
+      backdrop-filter: blur(2em);
+    }
+    ytd-playlist-panel-renderer#playlist {
+      --yt-lightsource-primary-title-color: #ffe5a8 !important;
+      --yt-lightsource-section4-color: rgba(255, 126, 182, 0.2) !important;
+      --yt-lightsource-section2-color: rgba(125, 179, 255, 0.2) !important;
+    }
+    *,
+    html,
+    [dark],
+    [light],
+    html[dark],
+    html[light] {
+      --yt-spec-base-background: var(--rep1), var(--lineg1);
+      --rep1: repeating-linear-gradient(to top, rgba(255,255,255,0.031) 0px 2px, transparent 2px 4px);
+      --lineg1: var(--bg2);
+      --yt-spec-text-primary: var(--tx1) !important;
+      --yt-spec-text-primary-inverse: var(--cy2);
+      --yt-spec-text-secondary: var(--tx2);
+      --yt-spec-menu-background: var(--yt-spec-base-background);
+      --yt-spec-additive-background: var(--bg0);
+      --yt-spec-raised-background: #313244;
+      --yt-spec-button-chip-background-hover: var(--bg3); /* Neutral hover */
+      --yt-spec-outline: var(--bg0);
+      --yt-spec-static-brand-red: #ff7eb6;
+      --yt-spec-brand-background-primary: var(--bg0);
+      --yt-spec-call-to-action: #7db3ff;
+      --yt-spec-inverted-background: #ff7eb6;
+      --yt-spec-suggested-action: rgba(125, 179, 255, 0.2);
+      --yt-deprecated-luna-black-opacity-lighten-2: var(--tx2);
+      --yt-deprecated-opalescence-soft-grey: var(--bg1);
+      --yt-spec-red-indicator: #ff7eb6;
+      --yt-spec-icon-active-other: var(--tx1);
+      --yt-spec-icon-inactive: var(--cy1);
+      --yt-spec-icon-disabled: #45475a;
+      --yt-spec-brand-icon-active: var(--tx1); /* Use neutral color instead of blue */
+      --yt-spec-brand-icon-inactive: var(--cy1);
+      --yt-button-icon-button-text-color: var(--yt-spec-text-primary);
+      --ytd-searchbox-border-color: rgba(136,136,136,0.2);
+      --ytd-searchbox-legacy-border-color: #313244;
+      --ytd-searchbox-legacy-border-shadow-color: rgba(125, 179, 255, 0.2);
+      --ytd-searchbox-legacy-button-color: var(--bg0);
+      --ytd-searchbox-legacy-button-border-color: rgba(125, 179, 255, 0.4);
+      --ytd-searchbox-legacy-button-focus-color: #7db3ff;
+      --ytd-searchbox-legacy-button-hover-color: var(--bg3);
+      --ytd-searchbox-legacy-button-hover-border-color: #7db3ff;
+      --ytd-searchbox-legacy-button-icon-color: #bac2de;
+      --ytd-searchbox-background: var(--bg2);
+      --yt-live-chat-banner-gradient-scrim: linear-gradient(#7db3ff -100%, transparent 100%);
+      --yt-deprecated-luna-black-opacity-lighten-3: var(--tx4);
+      --yt-live-chat-paid-message-header-color: var(--tx2);
+      --yt-live-chat-paid-message-timestamp-color: rgba(255, 126, 182, 0.7);
+      --yt-live-chat-paid-message-color: var(--tx5);
+      --yt-live-chat-disable-highlight-message-author-name-color: #ff7eb6;
+      --yt-live-chat-paid-message-primary-color: #7db3ff;
+      --yt-live-chat-secondary-text-color-inverse: #ff7eb6;
+
+      /* Native YouTube button variables for better compatibility */
+      /* Keep native brand colors to avoid permanent blue on active buttons */
+      --yt-spec-button-default-background-color: var(--bg1);
+      --yt-spec-button-default-text-color: var(--tx1);
+      --yt-spec-touch-response: var(--bg0);
+      --yt-spec-touch-response-inverse: var(--acc);
+
+      /* Catppuccin Mocha Color Palette - Cyberpunk Edition (Enhanced) */
+      --acc: #7db3ff; /* Brighter, more saturated blue */
+      --acc2: #ff7eb6; /* Brighter pink */
+      --acc3: rgba(125, 179, 255, 0.3); /* More intense blue glow */
+      --acc4: rgba(255, 126, 182, 0.25); /* More intense pink glow */
+      --bg0: rgba(49, 50, 68, 0.5); /* Surface 0 with more opacity */
+      --bg2: #1e1e2e; /* Catppuccin Base - darkest */
+      --bg1: #313244; /* Catppuccin Surface 0 */
+      --bg3: #45475a; /* Catppuccin Surface 1 */
+      --bg4: #7db3ff; /* Blue accent mejorado */
+      --bgoppa: 0.35;
+      --border1: #7db3ff; /* Brighter blue border */
+      --borderc: linear-gradient(225deg, #7db3ff 0%, #ff7eb6 50%, rgba(166, 227, 161, 0.4) 100%);
+      --border-color: var(--border1);
+      --bw: 0.2em;
+      --bw2: 0.12em;
+      --es: 1.5em;
+      --es2: 0.7em;
+      --cy1: #7db3ff; /* Brighter cyber blue */
+      --cy2: #6bc8ff; /* Brighter sky blue */
+      --fe1: rgba(49, 50, 68, 0.9); /* Surface with more opacity */
+      --lg1: #7db3ff; /* More intense neon blue glow */
+      --lg2: #ffe5a8; /* Warmer, more vibrant yellow */
+      --lg3: #ff7eb6; /* More intense neon pink glow */
+      --lg4: #b4f5a8; /* Brighter, more vibrant green */
+      --oppa: 0.96;
+      --scrim: rgba(30, 30, 46, 0.92); /* Base with opacity */
+      --topicons: #6bc8ff; /* Brighter sky blue icons */
+      --tx1: #e0e7ff; /* Brighter, more legible text */
+      --tx2: #c9d1e8; /* More visible subtext */
+      --tx3: #7db3ff; /* More vibrant blue text accent */
+      --tx4: #ff7eb6; /* More vibrant pink text accent */
+      --tx5: #b4f5a8; /* Brighter green text */
+      --vprc: 1.408rem;
+      --wallpas: center top/100% no-repeat;
+      --wallpas2: inherit no-repeat;
+      --wallpa1: radial-gradient(ellipse at top, rgba(125, 179, 255, 0.1) 0%, transparent 50%), 
+                 radial-gradient(ellipse at bottom right, rgba(255, 126, 182, 0.08) 0%, transparent 50%),
+                 linear-gradient(135deg, #1e1e2e 0%, #181825 50%, #1e1e2e 100%);
+      --poly1: polygon(var(--es) 0 /*t left*/, calc(100% - var(--es)) 0 /*t right*/, 100% calc(0% + var(--es)) /*t-side right*/, 100% calc(100% - var(--es)) /*b-side right*/, calc(100% - var(--es)) 100% /*b right*/, calc(0% + var(--es)) 100% /*b left*/, 0 calc(100% - var(--es)) /*b-side left*/, 0 var(--es)) /*t-side left*/;
+      --poly2: polygon(calc(var(--es) + 0.5%) var(--bw) /*t left*/, calc(99.5% - var(--es)) var(--bw) /*t right*/, calc(100% - var(--bw)) calc(0.5% + var(--es)) /*t-side right*/, calc(100% - var(--bw)) calc(99.5% - var(--es)) /*b-side right*/, calc(99.5% - var(--es)) calc(100% - var(--bw)) /*b right*/, calc(0.5% + var(--es)) calc(100% - var(--bw)) /*b left*/, var(--bw) calc(99.5% - var(--es)) /*b-side left*/, var(--bw) calc(var(--es) + 0.5%) /*t-side left*/);
+      --poly-filter-down1: polygon(0 0 /*t left*/, 100% 0 /*t right*/, 100% calc(0% + var(--es2)) /*t-side right*/, 100% calc(100% - var(--es2)) /*b-side right*/, calc(100% - var(--es2)) 100% /*b right*/, calc(0% + var(--es2)) 100% /*b left*/, 0 calc(100% - var(--es2)) /*b-side left*/, 0 var(--es)) /*t-side left*/;
+      --poly-filter-down2: polygon(var(--bw2) var(--bw2) /*t left*/, calc(100% - var(--bw2)) var(--bw2) /*t right*/, calc(100% - var(--bw2)) calc(0.5% + var(--es2)) /*t-side right*/, calc(100% - var(--bw2)) calc(99.5% - var(--es2)) /*b-side right*/, calc(99.5% - var(--es2)) calc(100% - var(--bw2)) /*b right*/, calc(0.5% + var(--es2)) calc(100% - var(--bw2)) /*b left*/, var(--bw2) calc(99.5% - var(--es2)) /*b-side left*/, var(--bw2) calc(var(--es2) + 0.5%) /*t-side left*/);
+      --poly-search: polygon(var(--ses1) 0 /*t left*/, 100% 0 /*t right*/, 100% calc(0% + var(--ses1)) /*t-side right*/, 100% calc(100% - var(--ses1)) /*b-side right*/, 100% 100% /*b right*/, 0% 100% /*b left*/, 0 calc(100% - var(--ses1)) /*b-side left*/, 0 var(--ses1)) /*t-side left*/;
+      --poly-search2: polygon(calc(var(--ses1) + 0%) var(--sbw1) /*t left*/, calc(100% - var(--ses1)) var(--sbw1) /*t right*/, calc(100% - var(--sbw1)) calc(0% + var(--sbw1)) /*t-side right*/, calc(100% - var(--sbw1)) calc(99.5% - var(--sbw1)) /*b-side right*/, calc(100% - var(--ses1)) calc(100% - var(--sbw1)) /*b right*/, calc(0% + var(--sbw1)) calc(100% - var(--sbw1)) /*b left*/, var(--sbw1) calc(99.5% - var(--ses1)) /*b-side left*/, var(--sbw1) calc(var(--ses1) + 0.5%) /*t-side left*/);
+      --poly-search-down: polygon(0 0 /*t left*/, 100% 0 /*t right*/, 100% calc(0% + var(--es)) /*t-side right*/, 100% calc(100% - var(--es)) /*b-side right*/, calc(100% - var(--es)) 100% /*b right*/, calc(0% + var(--es)) 100% /*b left*/, 0 calc(100% - var(--es)) /*b-side left*/, 0 var(--es)) /*t-side left*/;
+      --poly-search-down2: polygon(var(--bw) var(--bw) /*t left*/, calc(100% - var(--bw)) var(--bw) /*t right*/, calc(100% - var(--bw)) calc(0.5% + var(--es)) /*t-side right*/, calc(100% - var(--bw)) calc(99.5% - var(--es)) /*b-side right*/, calc(99.5% - var(--es)) calc(100% - var(--bw)) /*b right*/, calc(0.5% + var(--es)) calc(100% - var(--bw)) /*b left*/, var(--bw) calc(99.5% - var(--es)) /*b-side left*/, var(--bw) calc(var(--es) + 0.5%) /*t-side left*/);
+    }
+  /* Menu animations - optimized */
+  @keyframes galaw1 {
+      0% { width: 100%; box-shadow: 0 0 11px 2px var(--lg1); }
+      100% { width: 30%; }
+  }
+
+  @keyframes galaw2 {
+      0% { clip-path: circle(5%); box-shadow: 0 0 111px 22px var(--lg1); }
+      100% { clip-path: circle(100%); }
+  }
+
+  @keyframes galaw3 {
+      0% { clip-path: inset(0% 0 100% 0); opacity: 1; }
+      50% { clip-path: inset(0% 0 0% 0); opacity: 1; }
+      100% { opacity: 1; }
+  }
+
+  @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.3; }
+  }
+  
+  /* ============================================
+     YOUTUBE EXPERIENCE IMPROVEMENTS
+     ============================================ */
+  
+  /* 1. Hide annoying elements */
+  /* Hide Shorts completely */
+  ytd-rich-section-renderer[is-shorts],
+  ytd-reel-shelf-renderer,
+  ytd-reel-item-renderer,
+  #shorts-container,
+  [is-shorts] {
+    display: none !important;
+  }
+  
+  /* Hide the Shorts button in the sidebar */
+  ytd-guide-entry-renderer[target-id="FEshorts"],
+  a[href*="/shorts"] {
+    display: none !important;
+  }
+  
+  /* Hide promotional banners */
+  ytd-promoted-sparkles-web-renderer,
+  ytd-banner-promo-renderer,
+  .ytp-ad-overlay-container,
+  .ytp-ad-text,
+  .ytp-ad-overlay-close-button {
+    display: none !important;
+  }
+  
+  /* Hide the "Skip Ads" overlay button (keeps functionality while looking cleaner) */
+  .ytp-ad-skip-button {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .ytp-ad-skip-button:hover {
+    opacity: 1;
+  }
+  
+  /* 2. Player enhancements */
+  /* Make the theater mode player larger */
+  ytd-watch-flexy[theater] #player-theater-container.ytd-watch-flexy {
+    max-width: 95vw !important;
+  }
+  
+  /* Improve player controls */
+  .ytp-chrome-controls {
+    background: linear-gradient(to top, rgba(30, 30, 46, 0.95) 0%, transparent 100%);
+  }
+  
+  /* Make hover states on controls - clean glow, no box-shadow */
+  .ytp-button:hover {
+    opacity: 1 !important;
+    /* Removed box-shadow - use SVG filter glow instead */
+  }
+
+  .ytp-button:hover svg,
+  .ytp-button:hover svg path {
+    filter: drop-shadow(0 0 8px rgba(125, 179, 255, 1)) !important;
+    transition: filter 0.2s ease;
+  }
+
+  /* Ensure icons inside player buttons glow properly */
+  .ytp-chrome-bottom .ytp-button svg,
+  .ytp-chrome-bottom .ytp-button svg path,
+  .ytp-chrome-top .ytp-button svg,
+  .ytp-chrome-top .ytp-button svg path {
+    transition: filter 0.2s ease, fill 0.2s ease;
+  }
+
+  .ytp-chrome-bottom .ytp-button:hover svg,
+  .ytp-chrome-bottom .ytp-button:hover svg path,
+  .ytp-chrome-top .ytp-button:hover svg,
+  .ytp-chrome-top .ytp-button:hover svg path {
+    filter: drop-shadow(0 0 6px currentColor) !important;
+  }
+  
+  /* 3. Layout and spacing improvements */
+  /* More spacing for videos in the grid */
+  ytd-rich-item-renderer {
+    margin: 8px !important;
+  }
+  
+  /* Better sidebar spacing — no dead zones */
+  ytd-guide-renderer {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  #guide-content.ytd-app {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* 4. Visual upgrades for video cards */
+  /* Enhanced hover effect on cards */
+  ytd-rich-item-renderer:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Subtle glow on video hover */
+  ytd-rich-grid-media:hover #thumbnail.ytd-rich-grid-media {
+    box-shadow: 0 0 18px rgba(125, 179, 255, 0.4);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* 5. Search improvements */
+  /* More compact search results */
+  ytd-search[has-shelf] #contents.ytd-search {
+    padding: 0 16px;
+  }
+  
+  /* 6. Comments improvements */
+  /* More readable comments */
+  ytd-comment-thread-renderer {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(125, 179, 255, 0.15);
+  }
+  
+  /* Highlight on comment hover */
+  ytd-comment-thread-renderer:hover {
+    background: rgba(49, 50, 68, 0.3);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+  
+  /* 7. Accessibility improvements */
+  /* Better button contrast */
+  .yt-spec-button-shape-next--mono {
+    font-weight: 600 !important;
+  }
+  
+  /* Make all button text more visible */
+  .yt-spec-button-shape-next__button-text-content,
+  .yt-spec-button-shape-with-label__label,
+  yt-formatted-string[id*="button"],
+  #text.ytd-button-renderer {
+    font-weight: 600 !important;
+    text-shadow: 0 0 4px currentColor, 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Improved focus visibility */
+  *:focus-visible {
+    outline: 2px solid var(--acc);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  /* 8. Menu and popup improvements */
+  /* Faster, smoother menus */
+  ytd-menu-popup-renderer,
+  tp-yt-paper-menu-button .dropdown-content {
+    animation-duration: 0.15s !important;
+  }
+  
+  /* 9. Sidebar/guide improvements - Proper spacing */
+  /* Minimal constraints - let YouTube handle width */
+  ytd-guide-renderer,
+  ytd-mini-guide-renderer {
+    /* Let YouTube handle expansion naturally */
+  }
+
+  /* Proper layout for sidebar items - icon + text spacing */
+  ytd-guide-entry-renderer {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 8px 16px !important;
+    min-height: 48px !important;
+  }
+
+  /* Icon sizing - proper to not overlap */
+  .guide-icon.ytd-mini-guide-entry-renderer,
+  .guide-icon.ytd-guide-entry-renderer {
+    flex-shrink: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .guide-icon.ytd-mini-guide-entry-renderer svg,
+  .guide-icon.ytd-guide-entry-renderer svg,
+  .guide-icon.ytd-mini-guide-entry-renderer svg path,
+  .guide-icon.ytd-guide-entry-renderer svg path {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+  }
+  .guide-icon.ytd-mini-guide-entry-renderer:hover,
+  .guide-icon.ytd-guide-entry-renderer:hover {
+    transform: scale(1.05);
+  }
+
+  /* Text styling - readable size, no overlap */
+  ytd-guide-entry-renderer .title,
+  ytd-guide-entry-renderer #title,
+  ytd-guide-entry-renderer yt-formatted-string,
+  ytd-guide-entry-renderer .ytd-guide-entry-renderer #text {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    color: var(--tx1) !important;
+    text-shadow: 0 0 8px rgba(125, 179, 255, 0.5);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 180px;
+  }
+
+  /* Hover state */
+  ytd-guide-entry-renderer:hover .title,
+  ytd-guide-entry-renderer:hover #title,
+  ytd-guide-entry-renderer:hover yt-formatted-string {
+    color: var(--lg4) !important;
+    text-shadow: 0 0 12px rgba(180, 245, 168, 0.8);
+  }
+
+  /* Avatars - proper size */
+  ytd-guide-entry-renderer[guide-entry-type="guide-entry-type-avatar"] img,
+  ytd-mini-guide-entry-renderer img {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50%;
+    flex-shrink: 0 !important;
+  }
+
+  /* Section spacing */
+  ytd-guide-section-renderer {
+    padding: 4px 8px !important;
+  }
+
+  /* Clean spacing */
+  ytd-guide-section-renderer[renderer-style="default"] {
+    padding: 4px 0 !important;
+  }
+  
+  /* 10. Notification improvements */
+  /* Make notifications more visible */
+  ytd-notification-renderer {
+    border-left: 3px solid var(--acc);
+    background: var(--bg1) !important;
+  }
+  
+  /* 11. Thumbnail improvements */
+  /* Sharper thumbnails */
+  #thumbnail.ytd-rich-grid-media,
+  #thumbnail.ytd-video-meta-block {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  /* 12. Custom scrollbar improvements */
+  /* More visible, styled scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--bg2);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg3);
+    border-radius: 5px;
+    border: 2px solid var(--bg2);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--acc);
+    box-shadow: 0 0 10px rgba(125, 179, 255, 0.6);
+  }
+  
+  /* 13. Visual load-time improvements */
+  /* Themed skeleton loaders */
+  .skeleton-bg-color,
+  .ytp-skeleton {
+    background: var(--bg1) !important;
+  }
+  
+  /* 14. Miniplayer improvements */
+  /* More visible miniplayer */
+  .ytp-miniplayer {
+    border: 2px solid var(--acc);
+    box-shadow: 0 0 25px rgba(125, 179, 255, 0.5);
+  }
+  
+  /* 15. Live chat improvements */
+  /* More legible live chat */
+  ytd-live-chat-text-message-renderer {
+    padding: 8px;
+    margin: 4px 0;
+  }
+  
+  /* 16. Playlist improvements */
+  /* More compact playlist */
+  ytd-playlist-panel-renderer {
+    background: var(--bg1) !important;
+  }
+  
+  /* 17. Metadata improvements */
+  /* Clearer metadata */
+  #metadata-line.ytd-video-meta-block {
+    color: var(--tx2);
+    font-size: 0.9rem;
+  }
+  
+  /* 18. Action button improvements */
+  /* More visible like/dislike buttons with glow */
+  ytd-toggle-button-renderer[is-icon-button] {
+    transition: all 0.2s ease;
+  }
+
+  /* ============================================
+     INTUITIVE BUTTON GLOWS - Context-aware cyberpunk effects
+     ============================================ */
+
+  /* Base transition for all buttons */
+  ytd-toggle-button-renderer[is-icon-button],
+  ytd-subscribe-button-renderer,
+  .yt-spec-button-shape-next,
+  .yt-icon-button,
+  button {
+    transition: all 0.2s ease;
+  }
+
+  /* ----- INTUITIVE BUTTON GLOWS - Unified cyan/blue cyberpunk style ----- */
+  /* Like, dislike, subscribe, share, more - all use consistent blue glow */
+
+  /* Video like/dislike buttons */
+  ytd-video-primary-info-renderer ytd-toggle-button-renderer:hover,
+  ytd-menu-renderer > ytd-toggle-button-renderer:hover {
+    box-shadow: 0 0 15px var(--acc) !important, 0 0 5px var(--acc) !important;
+  }
+  ytd-video-primary-info-renderer ytd-toggle-button-renderer:hover svg path,
+  ytd-menu-renderer > ytd-toggle-button-renderer:hover svg path {
+    filter: drop-shadow(0 0 10px var(--acc)) !important;
+    fill: var(--acc) !important;
+  }
+
+  /* Subscribe button */
+  ytd-subscribe-button-renderer:hover {
+    box-shadow: 0 0 15px var(--acc) !important, 0 0 5px var(--acc) !important;
+  }
+  ytd-subscribe-button-renderer:hover svg path {
+    filter: drop-shadow(0 0 10px var(--acc)) !important;
+    fill: var(--acc) !important;
+  }
+
+  /* Notification bell */
+  ytd-notification-topbar-button-renderer:hover {
+    box-shadow: 0 0 15px var(--acc) !important, 0 0 5px var(--acc) !important;
+  }
+  ytd-notification-topbar-button-renderer:hover svg path {
+    filter: drop-shadow(0 0 10px var(--acc)) !important;
+    fill: var(--acc) !important;
+  }
+
+  /* Player controls */
+  .ytp-chrome-bottom .ytp-button:hover svg path,
+  .ytp-chrome-top .ytp-button:hover svg path {
+    filter: drop-shadow(0 0 8px var(--acc)) !important;
+  }
+
+  /* Generic fallback - all buttons get cyan glow on hover ONLY */
+  /* Exclude already toggled/active buttons to avoid permanent glow */
+  .yt-spec-button-shape-next:hover:not([is-toggled]):not([aria-pressed="true"]),
+  .yt-icon-button:hover:not([is-toggled]):not([aria-pressed="true"]),
+  button:hover:not([is-toggled]):not([aria-pressed="true"]) {
+    box-shadow: 0 0 12px var(--acc) !important, 0 0 4px var(--acc) !important;
+  }
+  .yt-spec-button-shape-next:hover:not([is-toggled]):not([aria-pressed="true"]) svg path,
+  .yt-icon-button:hover:not([is-toggled]):not([aria-pressed="true"]) svg path,
+  button:hover:not([is-toggled]):not([aria-pressed="true"]) svg path {
+    filter: drop-shadow(0 0 8px var(--acc)) !important;
+    fill: var(--acc) !important;
+  }
+  
+  /* Make like/dislike button text more visible */
+  ytd-toggle-button-renderer #text,
+  ytd-toggle-button-renderer yt-formatted-string {
+    font-weight: 600 !important;
+    text-shadow: 0 0 4px currentColor, 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Highlight the active like button */
+  ytd-toggle-button-renderer[is-toggled] #text,
+  ytd-toggle-button-renderer[is-toggled] yt-formatted-string {
+    color: #ff7eb6 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255, 126, 182, 0.9), 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* 19. Real-time search improvements */
+  /* More visible search suggestions */
+  .ytSearchboxComponentSuggestion {
+    padding: 8px 12px;
+    transition: background 0.15s ease;
+  }
+  .ytSearchboxComponentSuggestion:hover {
+    background: rgba(125, 179, 255, 0.2);
+  }
+  
+  /* 20. Global transition improvements - Optimized */
+  /* Only transition interactive elements for performance */
+  a, button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"]) {
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  /* Exceptions for elements that do not need transitions - critical for performance */
+  video,
+  img,
+  svg,
+  canvas,
+  iframe {
+    transition: none !important;
+  }
+  
+  /* ============================================
+     ADDITIONAL ADVANCED IMPROVEMENTS
+     ============================================ */
+  
+  /* 21. Cinema mode — darker background when the video is fullscreen */
+  ytd-watch-flexy[fullscreen] ytd-app,
+  ytd-watch-flexy[theater] ytd-app {
+    background: #0a0a0f !important;
+  }
+  
+  /* 22. Hide unnecessary UI elements during playback */
+  ytd-watch-flexy[theater] #secondary.ytd-watch-flexy,
+  ytd-watch-flexy[fullscreen] #secondary.ytd-watch-flexy {
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+  }
+  
+  ytd-watch-flexy[theater] #secondary.ytd-watch-flexy:hover,
+  ytd-watch-flexy[fullscreen] #secondary.ytd-watch-flexy:hover {
+    opacity: 1;
+  }
+  
+  /* 23. Advanced accessibility improvements */
+  /* Better text contrast over backgrounds */
+  yt-formatted-string,
+  #text.ytd-video-meta-block,
+  #text.ytd-channel-name {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* More visible status indicators */
+  ytd-toggle-button-renderer[is-toggled] {
+    filter: brightness(1.2);
+  }
+  
+  /* 24. Visual performance improvements */
+  /* Reduce animations on elements outside the viewport */
+  ytd-rich-item-renderer:not(:hover) {
+    will-change: auto;
+  }
+  
+  /* 25. Keyboard navigation improvements */
+  /* Better visual feedback for keyboard navigation */
+  ytd-guide-entry-renderer:focus,
+  ytd-rich-item-renderer:focus,
+  ytd-video-renderer:focus {
+    outline: 2px solid var(--acc);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  
+  /* 26. Video information improvements */
+  /* More visible duration badge */
+  .ytp-time-display {
+    font-weight: 600;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* 27. Video quality improvements */
+  /* More prominent quality indicator */
+  .ytp-settings-button.ytp-hd-quality-badge,
+  .ytp-settings-button.ytp-4k-quality-badge {
+    border: 1px solid var(--acc);
+    box-shadow: 0 0 10px rgba(125, 179, 255, 0.6);
+  }
+  
+  /* 28. Subscription improvements */
+  /* Make the subscription button stand out */
+  ytd-subscribe-button-renderer[subscribed] {
+    background: var(--bg3) !important;
+    border: 1px solid var(--acc) !important;
+  }
+
+  /* Subscribe button hover glow - box-shadow */
+  ytd-subscribe-button-renderer:hover {
+    box-shadow: 0 0 12px rgba(125, 179, 255, 0.8), 0 0 4px rgba(125, 179, 255, 0.5);
+  }
+
+  ytd-subscribe-button-renderer:hover svg,
+  ytd-subscribe-button-renderer:hover svg path {
+    filter: drop-shadow(0 0 6px rgba(125, 179, 255, 1));
+  }
+
+  /* Make subscription button text more visible */
+  ytd-subscribe-button-renderer #text,
+  ytd-subscribe-button-renderer yt-formatted-string,
+  ytd-subscribe-button-renderer .yt-spec-button-shape-next__button-text-content {
+    color: #cdd6f4 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 8px rgba(205, 214, 244, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Unsubscribed subscription button */
+  ytd-subscribe-button-renderer:not([subscribed]) #text,
+  ytd-subscribe-button-renderer:not([subscribed]) yt-formatted-string {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* 29. History and Watch Later improvements */
+  /* More organized lists */
+  ytd-playlist-video-list-renderer {
+    background: var(--bg1);
+    border-radius: 4px;
+    padding: 8px;
+  }
+  
+  /* 30. Advanced search improvements */
+  /* More prominent search filters */
+  ytd-search-filter-renderer[selected] {
+    background: var(--acc) !important;
+    color: #1e1e2e !important;
+    font-weight: 600;
+  }
+  
+  /* 31. Recommendation improvements */
+  /* Better visual separation between sections */
+  ytd-item-section-renderer {
+    margin: 24px 0;
+    padding: 16px 0;
+    border-top: 1px solid rgba(125, 179, 255, 0.15);
+  }
+  
+  /* 32. Channel improvements */
+  /* More prominent channel header */
+  #channel-header.ytd-c4-tabbed-header-renderer {
+    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+    border-bottom: 2px solid var(--acc);
+  }
+  
+  /* 33. Playlist improvements */
+  /* More interactive playlist items */
+  ytd-playlist-video-renderer:hover {
+    background: rgba(125, 179, 255, 0.15);
+    transform: translateX(4px);
+    transition: all 0.2s ease;
+  }
+  
+  /* 34. Statistics improvements */
+  /* More readable view/like counts */
+  #count.ytd-video-view-count-renderer,
+  .yt-spec-button-shape-next__button-text-content {
+    font-weight: 600 !important;
+    text-shadow: 0 0 4px currentColor, 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Make the like counter more visible */
+  ytd-toggle-button-renderer #text.ytd-toggle-button-renderer {
+    font-weight: 600 !important;
+    color: var(--tx1) !important;
+  }
+  
+  /* 35. Forced dark mode improvements */
+  /* Ensure dark mode is always active */
+  html[dark],
+  html {
+    color-scheme: dark;
+  }
+  
+/* 36. Progressive loading improvements */
+  /* Subtler skeleton loaders */
+  .skeleton-bg-color {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  /* 37. Subscription notification improvements */
+  /* Make the bell icon more visible when there are notifications */
+  ytd-notification-topbar-button-renderer[has-unseen-notifications] {
+    filter: drop-shadow(0 0 10px rgba(255, 126, 182, 0.9));
+  }
+  
+  /* 38. Voice search improvements */
+  /* Make the voice search button more visible */
+  #voice-search-button.ytd-masthead {
+    border: 1px solid var(--acc);
+    border-radius: 50%;
+    padding: 8px;
+  }
+  
+  /* 39. Compact mode improvements */
+  /* Denser grid for more visible videos */
+  .ytd-rich-grid-renderer {
+    --ytd-rich-grid-items-per-row: 6 !important;
+  }
+  
+  /* 40. Final polish */
+  /* Remove residual white borders */
+  * {
+    border-color: transparent;
+  }
+  
+  /* Ensure all inputs use the theme */
+  input,
+  textarea,
+  select {
+    background: var(--bg1) !important;
+    color: var(--tx1) !important;
+    border: 1px solid var(--bg3) !important;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--acc) !important;
+    box-shadow: 0 0 10px rgba(125, 179, 255, 0.4) !important;
+  }
+  
+  /* ============================================
+     FINAL BUTTON TEXT IMPROVEMENTS
+     ============================================ */
+  
+  /* Make all button text more visible and aesthetic */
+  button,
+  .yt-spec-button-shape-next,
+  ytd-button-renderer,
+  ytd-subscribe-button-renderer,
+  ytd-toggle-button-renderer {
+    font-weight: 600 !important;
+  }
+  
+  /* Primary button text */
+  .yt-spec-button-shape-next--filled,
+  .yt-spec-button-shape-next--call-to-action {
+    font-weight: 700 !important;
+  }
+  
+  /* Improve visibility of all interactive text */
+  yt-formatted-string[id*="button"],
+  yt-formatted-string[class*="button"],
+  #text.ytd-button-renderer,
+  #text.ytd-subscribe-button-renderer {
+    font-weight: 600 !important;
+    filter: brightness(1.1);
+  }
+  
+  /* Primary action buttons with extra-visible text */
+  ytd-menu-renderer ytd-menu-service-item-renderer #text,
+  ytd-menu-renderer ytd-menu-service-item-renderer yt-formatted-string {
+    font-weight: 600 !important;
+    color: var(--tx1) !important;
+    text-shadow: 0 0 4px currentColor, 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Improve contrast on share buttons */
+  ytd-button-renderer[is-paper-button] #text,
+  ytd-button-renderer[is-paper-button] yt-formatted-string {
+    font-weight: 600 !important;
+    text-shadow: 0 0 4px currentColor, 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ============================================
+     MODERN YOUTUBE COMPATIBILITY
+     ============================================ */
+
+  /* New YouTube app structure */
+  yts-app,
+  #masthead-container,
+  #content {
+    background: var(--bg2) !important;
+  }
+
+  /* Modern player improvements */
+  .html5-video-player,
+  .ytp-chrome-bottom {
+    background: linear-gradient(to top, rgba(30, 30, 46, 0.95) 0%, transparent 100%);
+  }
+
+  /* Better thumbnail quality */
+  ytd-thumbnail[size="large"] yt-image img,
+  ytd-thumbnail yt-img img {
+    border-radius: 4px;
+  }
+
+  /* Improved video grid */
+  ytd-rich-grid-renderer {
+    --ytd-rich-grid-items-per-row: var(--video-columns, 5);
+  }
+
+  @media (max-width: 1400px) {
+    ytd-rich-grid-renderer {
+      --video-columns: 4;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    ytd-rich-grid-renderer {
+      --video-columns: 3;
+    }
+  }
+
+  @media (max-width: 800px) {
+    ytd-rich-grid-renderer {
+      --video-columns: 2;
+    }
+  }
+
+  /* Modern sidebar icons */
+  .ytd-guide-entry-renderer svg,
+  .ytd-mini-guide-entry-renderer svg {
+    fill: var(--topicons);
+    transition: fill 0.2s ease;
+  }
+
+  .ytd-guide-entry-renderer:hover svg,
+  .ytd-mini-guide-entry-renderer:hover svg {
+    fill: var(--acc);
+  }
+
+  /* Better scrollbar - subtle */
+  html {
+    scrollbar-color: var(--bg3) var(--bg2);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--acc);
+  }
+
+  /* Better dark mode override for system */
+  @media (prefers-color-scheme: light) {
+    html {
+      filter: invert(1) hue-rotate(180deg);
+    }
+    img, video, ytd-thumbnail, .ytp-videostream {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
+
+  /* Modern chip filters */
+  yt-chip-cloud-chip-renderer {
+    --yt-chip-background: var(--bg1);
+    --yt-chip-text-color: var(--tx2);
+    border-radius: 0;
+  }
+
+  /* New search suggestions */
+  .ytd-search-suggestion-renderer,
+  ytd-suggestion-renderer {
+    color: var(--tx1) !important;
+  }
+
+  .ytd-search-suggestion-renderer:hover,
+  ytd-suggestion-renderer:hover {
+    background: rgba(125, 179, 255, 0.1);
+  }
+
+  /* Improved notification badge */
+  .yt-spec-topbar-button-badge {
+    background: var(--acc2) !important;
+    color: var(--bg2) !important;
+    font-weight: 700 !important;
+  }
+
+  /* Better keyboard navigation - subtle */
+  :focus-visible {
+    outline: 2px solid var(--acc);
+    outline-offset: 2px;
+  }
+
+  /* Improved live chat */
+  ytd-live-chat-renderer {
+    background: var(--bg1) !important;
+  }
+
+  ytd-live-chat-message-renderer {
+    --yt-live-chat-primary-text-color: var(--tx1);
+    --yt-live-chat-secondary-text-color: var(--tx2);
+  }
+
+  /* Better playlist sidebar */
+  ytd-playlist-panel-renderer {
+    background: var(--bg1) !important;
+    border-left: 1px solid var(--bg3);
+  }
+
+  /* Improved video info */
+  ytd-video-primary-info-renderer,
+  ytd-video-secondary-info-renderer {
+    color: var(--tx1);
+  }
+
+  /* Better comments section */
+  ytd-comment-renderer {
+    color: var(--tx1);
+  }
+
+  ytd-comment-renderer[author=""] #author-comment {
+    color: var(--lg4);
+  }
+
+  /* Modern bottom bar - less intrusive */
+  .ytp-chrome-bottom {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+
+  .ytp-chrome-bottom:hover {
+    opacity: 1;
+  }
+
+  /* Better channel page */
+  ytd-c4-tabbed-header-renderer {
+    background: linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 100%) !important;
+  }
+
+  /* Improved subscription button */
+  ytd-subscribe-button-renderer paper-button {
+    background: var(--acc) !important;
+    color: var(--bg2) !important;
+  }
+
+  /* Better shelf sections */
+  ytd-shelf-renderer {
+    margin: 16px 0;
+  }
+
+  /* Remove unnecessary borders */
+  .ytp-pip .ytp-pip-icon,
+  .ytp-pip-preview-video {
+    border: none;
+  }
+
+  /* =====================================================
+     FIX v2: Force-remove persistent blue highlight on
+     Notification Bell + Settings Gear
+     ===================================================== */
+
+  /* --- SETTINGS GEAR (player) --- */
+  /* Override any background YouTube injects inline or via JS */
+  .ytp-settings-button,
+  .ytp-settings-button[aria-expanded="true"],
+  .ytp-settings-button[aria-pressed="true"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* Kill the bluish fill on the gear icon SVG at all times */
+  .ytp-settings-button svg path,
+  .ytp-settings-button[aria-expanded="true"] svg path,
+  .ytp-settings-button[aria-pressed="true"] svg path {
+    fill: #ffffff !important;
+    filter: none !important;
+  }
+
+  /* Kill the quality badge glow ring (HD, 4K, etc.) */
+  .ytp-settings-button.ytp-hd-quality-badge::after,
+  .ytp-settings-button.ytp-hdr-quality-badge::after,
+  .ytp-settings-button.ytp-4k-quality-badge::after,
+  .ytp-settings-button.ytp-5k-quality-badge::after,
+  .ytp-settings-button.ytp-8k-quality-badge::after,
+  .ytp-settings-button.ytp-3d-badge::after,
+  .ytp-settings-button.ytp-3d-badge-grey::after,
+  .ytp-chrome-controls .ytp-button[aria-pressed]::after {
+    box-shadow: none !important;
+    border-color: transparent !important;
+    background: transparent !important;
+    text-shadow: none !important;
+    color: var(--acc) !important;
+  }
+
+  /* --- NOTIFICATION BELL (masthead) --- */
+  /* Target the button itself and its inner yt-icon-button */
+  ytd-notification-topbar-button-renderer,
+  ytd-notification-topbar-button-renderer[aria-expanded="true"],
+  ytd-notification-topbar-button-renderer[aria-pressed="true"],
+  ytd-notification-topbar-button-renderer yt-icon-button,
+  ytd-notification-topbar-button-renderer yt-icon-button[aria-expanded="true"],
+  ytd-notification-topbar-button-renderer yt-icon-button[aria-pressed="true"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Kill the blue fill on the bell SVG */
+  ytd-notification-topbar-button-renderer svg path,
+  ytd-notification-topbar-button-renderer[aria-expanded="true"] svg path,
+  ytd-notification-topbar-button-renderer yt-icon-button svg path {
+    fill: var(--topicons) !important;
+    filter: none !important;
+  }
+
+  /* Also kill the touch-feedback ripple that leaves a blue background */
+  ytd-notification-topbar-button-renderer .yt-spec-touch-feedback-shape,
+  ytd-notification-topbar-button-renderer .yt-spec-touch-feedback-shape--touch-response-inverse,
+  ytd-notification-topbar-button-renderer .yt-spec-touch-feedback-shape__fill {
+    background-color: transparent !important;
+    opacity: 0 !important;
+  }
+
+  /* --- GLOBAL SAFETY NET for any yt-icon-button that gets stuck selected --- */
+  yt-icon-button[aria-expanded="true"] {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  yt-icon-button[aria-expanded="true"] svg path {
+    fill: var(--topicons) !important;
+    filter: none !important;
+  }
+
+  /* Like button - pink when active */
+  [aria-label*="like"][aria-pressed="true"] svg path,
+  [aria-label*="like"][aria-pressed="true"] path,
+  ytd-menu-renderer ytd-toggle-button-renderer[is-toggled] path,
+  ytd-video-primary-info-renderer ytd-toggle-button-renderer[is-toggled] path {
+    fill: #ff7eb6 !important;
+    filter: drop-shadow(0 0 10px rgba(255, 126, 182, 1)) !important;
+  }
+}
+  
