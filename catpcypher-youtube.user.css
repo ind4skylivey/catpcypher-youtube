@@ -296,7 +296,7 @@
       cursor: pointer;
       border-radius: 0px;
       transition: box-shadow 0.1s ease, background 0.3s ease;
-      clip-path: polygon(0 0, calc(100% - var(--es)) 0, 100% var(--es), 100% calc(100% - 0%), calc(100% - var(--es)) 100%, var(--es) 100%, 0 calc(100% - var(--es)), 0 var(--es));
+      clip-path: polygon(0 0, calc(100% - var(--es)) 0, 100% var(--es), 100% 100%, calc(100% - var(--es)) 100%, var(--es) 100%, 0 calc(100% - var(--es)), 0 var(--es));
       overflow: hidden;
       border: none;
       font-weight: 600 !important;
@@ -443,7 +443,7 @@
       top: 0;
       z-index: 99999;
       margin-right: auto;
-      clip-path: polygon(0 0 /*t left*/, calc(100% - var(--es)) 0 /*t right*/, 100% calc(0% + var(--es)) /*t-side right*/, 100% calc(100% - var(--es)) /*b-side right*/, 100% 100% /*b right*/, 0% 100% /*b left*/, 0 100% /*b-side left*/, 0 100%) /*t-side left*/;
+      clip-path: polygon(0 0 /*t left*/, calc(100% - var(--es)) 0 /*t right*/, 100% calc(0% + var(--es)) /*t-side right*/, 100% calc(100% - var(--es)) /*b-side right*/, 100% 100% /*b right*/, 0% 100% /*b left*/, 0 100% /*b-side left*/, 0 100% /*t-side left*/);
       animation: galaw1 0.4s 1 linear;
     }
     ytd-exploratory-results-renderer.ytd-item-section-renderer,
@@ -530,16 +530,6 @@
     html .watch-skeleton .skeleton-bg-color {
       background: var(--bg2);
     }
-    .ytp-settings-button.ytp-hd-quality-badge:after,
-    .ytp-settings-button.ytp-hdr-quality-badge:after,
-    .ytp-settings-button.ytp-4k-quality-badge:after,
-    .ytp-settings-button.ytp-5k-quality-badge:after,
-    .ytp-settings-button.ytp-8k-quality-badge:after,
-    .ytp-settings-button.ytp-3d-badge-grey:after,
-    .ytp-settings-button.ytp-3d-badge:after,
-    .ytp-chrome-controls .ytp-button[aria-pressed]:after {
-      /* Clean - no box-shadow on active state */
-    }
     .ytp-swatch-color-white {
       color: #ff7eb6;
     }
@@ -604,7 +594,7 @@
       font-weight: 700 !important;
       text-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 1px 3px rgba(0, 0, 0, 0.4);
     }
-    yt-chip-cloud-chip-renderer[chip-style=STYLE_HOME_FILTER][selected],
+    yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"][selected],
     #text.yt-chip-cloud-chip-renderer:hover,
     .yt-tab-shape-wiz__tab {
       color: var(--tx2);
@@ -620,12 +610,12 @@
       color: var(--cy1);
       text-shadow: 0 0 6px rgba(125, 179, 255, 0.6);
     }
-    yt-chip-cloud-chip-renderer[chip-style=STYLE_HOME_FILTER] {
+    yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"] {
       background-color: var(--fe1);
       backdrop-filter: blur(2px);
       transition: all 0.2s ease;
     }
-    yt-chip-cloud-chip-renderer[chip-style=STYLE_HOME_FILTER]:hover {
+    yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"]:hover {
       box-shadow: 0 0 12px rgba(125, 179, 255, 0.4);
     }
     yt-chip-cloud-chip-renderer.ytd-feed-filter-chip-bar-renderer {
@@ -948,7 +938,7 @@
       --wallpa1: radial-gradient(ellipse at top, rgba(125, 179, 255, 0.1) 0%, transparent 50%), 
                  radial-gradient(ellipse at bottom right, rgba(255, 126, 182, 0.08) 0%, transparent 50%),
                  linear-gradient(135deg, #1e1e2e 0%, #181825 50%, #1e1e2e 100%);
-      --poly1: polygon(var(--es) 0 /*t left*/, calc(100% - var(--es)) 0 /*t right*/, 100% calc(0% + var(--es)) /*t-side right*/, 100% calc(100% - var(--es)) /*b-side right*/, calc(100% - var(--es)) 100% /*b right*/, calc(0% + var(--es)) 100% /*b left*/, 0 calc(100% - var(--es)) /*b-side left*/, 0 var(--es)) /*t-side left*/;
+      --poly1: polygon(var(--es) 0 /*t left*/, calc(100% - var(--es)) 0 /*t right*/, 100% calc(0% + var(--es)) /*t-side right*/, 100% calc(100% - var(--es)) /*b-side right*/, calc(100% - var(--es)) 100% /*b right*/, calc(0% + var(--es)) 100% /*b left*/, 0 calc(100% - var(--es)) /*b-side left*/, 0 var(--es) /*t-side left*/);
       --poly2: polygon(calc(var(--es) + 0.5%) var(--bw) /*t left*/, calc(99.5% - var(--es)) var(--bw) /*t right*/, calc(100% - var(--bw)) calc(0.5% + var(--es)) /*t-side right*/, calc(100% - var(--bw)) calc(99.5% - var(--es)) /*b-side right*/, calc(99.5% - var(--es)) calc(100% - var(--bw)) /*b right*/, calc(0.5% + var(--es)) calc(100% - var(--bw)) /*b left*/, var(--bw) calc(99.5% - var(--es)) /*b-side left*/, var(--bw) calc(var(--es) + 0.5%) /*t-side left*/);
       --poly-filter-down1: polygon(0 0 /*t left*/, 100% 0 /*t right*/, 100% calc(0% + var(--es2)) /*t-side right*/, 100% calc(100% - var(--es2)) /*b-side right*/, calc(100% - var(--es2)) 100% /*b right*/, calc(0% + var(--es2)) 100% /*b left*/, 0 calc(100% - var(--es2)) /*b-side left*/, 0 var(--es)) /*t-side left*/;
       --poly-filter-down2: polygon(var(--bw2) var(--bw2) /*t left*/, calc(100% - var(--bw2)) var(--bw2) /*t right*/, calc(100% - var(--bw2)) calc(0.5% + var(--es2)) /*t-side right*/, calc(100% - var(--bw2)) calc(99.5% - var(--es2)) /*b-side right*/, calc(99.5% - var(--es2)) calc(100% - var(--bw2)) /*b right*/, calc(0.5% + var(--es2)) calc(100% - var(--bw2)) /*b left*/, var(--bw2) calc(99.5% - var(--es2)) /*b-side left*/, var(--bw2) calc(var(--es2) + 0.5%) /*t-side left*/);
@@ -1135,12 +1125,6 @@
   }
   
   /* 9. Sidebar/guide improvements - Proper spacing */
-  /* Minimal constraints - let YouTube handle width */
-  ytd-guide-renderer,
-  ytd-mini-guide-renderer {
-    /* Let YouTube handle expansion naturally */
-  }
-
   /* Proper layout for sidebar items - icon + text spacing */
   ytd-guide-entry-renderer {
     display: flex !important;
@@ -1476,16 +1460,6 @@
     border: 1px solid var(--acc) !important;
   }
 
-  /* Subscribe button hover glow - box-shadow */
-  ytd-subscribe-button-renderer:hover {
-    box-shadow: 0 0 12px rgba(125, 179, 255, 0.8), 0 0 4px rgba(125, 179, 255, 0.5);
-  }
-
-  ytd-subscribe-button-renderer:hover svg,
-  ytd-subscribe-button-renderer:hover svg path {
-    filter: drop-shadow(0 0 6px rgba(125, 179, 255, 1));
-  }
-
   /* Make subscription button text more visible */
   ytd-subscribe-button-renderer #text,
   ytd-subscribe-button-renderer yt-formatted-string,
@@ -1581,12 +1555,6 @@
     border: 1px solid var(--acc);
     border-radius: 50%;
     padding: 8px;
-  }
-  
-  /* 39. Compact mode improvements */
-  /* Denser grid for more visible videos */
-  .ytd-rich-grid-renderer {
-    --ytd-rich-grid-items-per-row: 6 !important;
   }
   
   /* 40. Final polish */
