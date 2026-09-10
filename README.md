@@ -371,7 +371,7 @@ Or keep the gradient system and adjust the colors.
 
 ## License
 
-MIT License — do whatever you want, just give credit. See [LICENSE](LICENSE).
+GPL-3.0-or-later — do whatever you want, just give credit. See [LICENSE](LICENSE).
 
 ---
 
